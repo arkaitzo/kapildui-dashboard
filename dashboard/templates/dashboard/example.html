@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load Charts and the corechart and barchart packages.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart and bar chart when Charts is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Fallos');
+        data.addColumn('number', 'Cantidad');
+        data.addRows([
+          ['Caudalímetro TX',             2],
+          ['Deshidratador + Presión WG',  3],
+          ['Booster TX',                  2],
+          ['Sistema Elevación',           2],
+          ['Error de lectura de datos',   4]
+        ]);
+
+        var data_temperature = new google.visualization.DataTable();
+        data_temperature.addColumn('date', 'Fecha');
+        data_temperature.addColumn('number', 'Temperatura');
+        data_temperature.addRows([
+          [new Date(2016,01,01),18.2],
+          [new Date(2016,01,02),18.9],
+          [new Date(2016,01,03),18.3],
+          [new Date(2016,01,04),18.5],
+          [new Date(2016,01,05),18.4],
+          [new Date(2016,01,06),18.6],
+          [new Date(2016,01,07),18.8],
+          [new Date(2016,01,08),18.1],
+        ]);
+
+
+        var piechart_options = {title:'PieChart: Fallos Kapildui - Enero 2016',
+            width:500,
+            height:300};
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        piechart.draw(data, piechart_options);
+
+        var histogram_options = {title:'ColumnChart: Fallos Kapildui - Enero 2016',
+            width:500,
+            height:300,
+            legend: 'none'};
+        var histogram = new google.visualization.ColumnChart(document.getElementById('histogram_div'));
+        histogram.draw(data, histogram_options);
+
+        var donutchart_options = {title:'DonutChart: Fallos Kapildui - Enero 2016',
+            width:500,
+            height:300,
+            pieHole: 0.4};
+        var donutchart = new google.visualization.PieChart(document.getElementById('donutchart_div'));
+        donutchart.draw(data, donutchart_options);
+
+        var linechart_options = {
+          title:'LineChart: Temperatura Sala Radar - Enero 2016',
+          width:500,
+          height:300,
+          curveType:'function',
+          legend: 'none'
+        };
+        var linechart = new google.visualization.LineChart(document.getElementById('linechart_div'));
+        linechart.draw(data_temperature, linechart_options);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <!--  style="border: 1px solid #ccc" -->
+        <td><div id="piechart_div"></div></td>
+        <td><div id="histogram_div"></div></td>
+      </tr>
+      <tr>
+        <td><div id="donutchart_div"></div></td>
+        <td><div id="linechart_div"></div></td>
+      </tr>
+    </table>
+  </body>
+</html>

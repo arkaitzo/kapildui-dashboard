@@ -1,0 +1,33 @@
+{% extends 'dashboard/base.html' %}
+
+{% block bloques_radar %}
+<div>
+  <h1><a>Bloque Transmisor</a></h1>
+</div>
+<div>
+  <table class="columns">
+    <td><div id="linechart_tx_potencia_h"></div></td>
+    <td><div id="linechart_ecu_temp"></div></td>
+    <tr>
+      <td><div id="linechart_offset_potencia"></div></td>
+      <td><div id="linechart_corriente_solenoide"></div></td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <h1><a>Bloque Receptor</a></h1>
+</div>
+<div>
+  <table class="columns">
+    <tr>
+      <td><div id="linechart_drx1_volt"></div></td> <!-- Tension DRX1 -->
+      <td><div id="linechart_drx2_volt"></div></td> <!-- Tension DRX2 -->
+    </tr>
+    <tr>
+      <td><div id="linechart_drx1_temp"></div></td> <!-- Temperaturas DRX1 -->
+      <td><div id="linechart_drx2_temp"></div></td> <!-- Temperaturas DRX2 -->
+    </tr>
+  </table>
+</div>
+{% endblock bloques_radar %}
