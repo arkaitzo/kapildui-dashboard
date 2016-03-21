@@ -27,6 +27,13 @@ choices_temperaturas = (
     ("ecupt100temp_1","ECU Sala Radar"), # ecupt100temp_1
 )
 
+class TempDB(models.Model):
+    tag = models.CharField(max_length = 15)
+    fecha = models.DateTimeField(max_length=19)
+    valor = models.DecimalField(max_digits=6, decimal_places=3)
+
+    def __unicode__(self): # __str__ en Python 3
+        return self.fecha.strftime('%Y-%m-%d')
 
 class TensionesReceptor(models.Model):
     fuente = models.CharField(max_length = 12, choices=choices_fuentes_rx) # drx1powpos33
@@ -34,7 +41,7 @@ class TensionesReceptor(models.Model):
     tension = models.DecimalField(max_digits=5, decimal_places=3) # xx.yyy
 
     def __unicode__(self): # __str__ en Python 3
-        return self.fecha.strftime('%Y-%m-%d %H:%M:%S %Z')
+        return self.fecha.strftime('%Y-%m-%d')
 
 
 class PotenciasTransmisor(models.Model):

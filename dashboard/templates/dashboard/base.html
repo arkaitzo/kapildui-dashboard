@@ -17,7 +17,6 @@
       // Draw the pie chart and bar chart when Charts is loaded.
       google.charts.setOnLoadCallback(drawChart);
 
-      
       function drawChart() {
 
         // ##### DATOS #####
@@ -158,10 +157,10 @@
 
         var potencia_h = new google.visualization.DataTable();
         potencia_h.addColumn('timeofday', 'Fecha');
-        potencia_h.addColumn('number', 'H');
+        potencia_h.addColumn('number', 'Canal H');
         var potencia_v = new google.visualization.DataTable();
         potencia_v.addColumn('timeofday', 'Fecha');
-        potencia_v.addColumn('number', 'V');
+        potencia_v.addColumn('number', 'Canal V');
         potencia_h.addRows([
           {% for valor in poth %}
             [ [ {{ valor.fecha.hour }},{{ valor.fecha.minute }},{{ valor.fecha.second }} ],
@@ -310,7 +309,7 @@
         drx2_temp_chart.draw(temperaturas_drx2, drx2_temperatura_options);
 
         var tx_potencia_options = {
-          title:'Potencias TX Canal H - 1 de Marzo de 2016',
+          title:'Potencias TX - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
           width:600,
           height:300,
@@ -403,6 +402,11 @@
         var sol_cur_chart = new google.visualization.LineChart(document.getElementById('linechart_corriente_solenoide'));
         sol_cur_chart.draw(corriente_solenoide, solenoide_options);
       }
+
+      $(window).resize(function() {
+          drawChart();
+        });
+    
     </script>
   </head>
 

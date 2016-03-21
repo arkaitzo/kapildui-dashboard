@@ -1,9 +1,13 @@
 from django.contrib import admin
 from .models import *
 
+class TempDBAdmin(admin.ModelAdmin):
+    list_display = ('tag', 'fecha','valor',)
+    list_filter = ('tag','fecha')
+
 class TensionesReceptorAdmin(admin.ModelAdmin):
-    list_display = ('fuente', 'fecha', 'tension',)
-    list_filter = ('fuente','fecha',)
+    list_display = ('fuente', 'fecha','tension',)
+    list_filter = ('fuente','fecha')
 
 class PotenciasTransmisorAdmin(admin.ModelAdmin):
     list_display = ('canal', 'fecha', 'potencia',)
@@ -18,6 +22,7 @@ class CorrienteSolenoideAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
+admin.site.register(TempDB, TempDBAdmin)
 admin.site.register(TensionesReceptor, TensionesReceptorAdmin)
 admin.site.register(PotenciasTransmisor, PotenciasTransmisorAdmin)
 admin.site.register(Temperaturas, TemperaturasAdmin)
