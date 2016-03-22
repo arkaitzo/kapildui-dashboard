@@ -1,10 +1,16 @@
 {% extends 'dashboard/base.html' %}
+{% load staticfiles %}
 
 {% block bloques_radar %}
-<div>
-  <h1><a>Bloque Transmisor</a></h1>
+<div class="tx-header">
+  <hr> <h1>
+    <img class="adasa-logo" src="{% static "img/adasa.png" %}" alt="Adasa Sistemas S.A.U." height="50" />
+    <a>ESTADO DEL TRANSMISOR</a>
+    <img class="euskalmet-logo" src="{% static "img/euskalmet.png" %}" alt="Euskalmet" height="50" />
+  </h1> <hr>
 </div>
-<div>
+
+<div class="grid-tablas">
   <table class="columns">
     <td><div id="linechart_tx_potencia_h"></div></td>
     <td><div id="linechart_ecu_temp"></div></td>
@@ -15,10 +21,15 @@
   </table>
 </div>
 
-<div>
-  <h1><a>Bloque Receptor</a></h1>
+<div class="rx-header">
+  <hr> <h1>
+    <img class="adasa-logo" src="{% static "img/adasa.png" %}" alt="Adasa Sistemas S.A.U." height="50" />
+    <a>ESTADO DEL RECEPTOR</a>
+    <img class="euskalmet-logo" src="{% static "img/euskalmet.png" %}" alt="Euskalmet" height="50" />
+  </h1> <hr>
 </div>
-<div>
+
+<div class="grid-tablas">
   <table class="columns">
     <tr>
       <td><div id="linechart_drx1_volt"></div></td> <!-- Tension DRX1 -->

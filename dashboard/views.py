@@ -8,9 +8,9 @@ from datetime import datetime
 # Create your views here.
 def dashboard_home(request):
     # Pedire al usuario un rango de maximo 6 horas
-    start_date = datetime(2016,3,1,00,0,0) #16
+    start_date = datetime(2016,3,1,16,0,0) #16
     start_date = timezone.make_aware(start_date, timezone.get_current_timezone())
-    end_date = datetime(2016,3,1,23,59,59) # 19,29,59
+    end_date = datetime(2016,3,1,19,29,59) # 19,29,59
     end_date = timezone.make_aware(end_date, timezone.get_current_timezone())
     rango = [start_date,end_date]
     

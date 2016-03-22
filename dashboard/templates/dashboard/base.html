@@ -3,14 +3,12 @@
 
   <head>
     <title>Kapildui - Cuadro de Mando</title>
-    <!--
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    -->
-    <script type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       // Load Charts and the corechart and barchart packages.
       google.charts.load('43', {'packages':['corechart']}); // Frozen version 43. Si no, 'current'
@@ -215,7 +213,7 @@
         var drx1_tension_options = {
           title:'Tensiones DRX1 - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           interpolateNulls: true,
           curveType:'function',
@@ -239,7 +237,7 @@
         var drx2_tension_options = {
           title:'Tensiones DRX2 - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           interpolateNulls: true,
           curveType:'function',
@@ -263,7 +261,7 @@
         var drx1_temperatura_options = {
           title:'Temperaturas DRX1 - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           interpolateNulls: true,
           curveType:'function',
@@ -287,7 +285,7 @@
         var drx2_temperatura_options = {
           title:'Temperaturas DRX2 - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           interpolateNulls: true,
           curveType:'function',
@@ -311,7 +309,7 @@
         var tx_potencia_options = {
           title:'Potencias TX - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           interpolateNulls: true,
           curveType:'function',
@@ -335,7 +333,7 @@
         var ecu_temperaturas_options = {
           title:'Temperaturas ECU - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           curveType:'function',
           //crosshair: {trigger: 'both'},
@@ -359,7 +357,7 @@
         var offset_options = {
           title:'Offset de Potencias TX - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           curveType:'function',
           legend: 'none',
@@ -382,7 +380,7 @@
         var solenoide_options = {
           title:'Corriente Solenoide TX - 1 de Marzo de 2016',
           titleTextStyle: {fontSize: 14},
-          width:600,
+          width:550,
           height:300,
           curveType:'function',
           legend: 'none',
@@ -406,7 +404,6 @@
       $(window).resize(function() {
           drawChart();
         });
-    
     </script>
   </head>
 

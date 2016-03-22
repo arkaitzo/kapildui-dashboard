@@ -1,6 +1,11 @@
 from django import forms    # Importar los formularios
 from .models import *    # Importar nuestros modelos
-from django.contrib.admin.widgets import AdminDateWidget
+
+import datetime
+from django.forms.extras.widgets import SelectDateWidget
+from django.forms import ModelForm, Form
+
+date_field = forms.DateField(widget=SelectDateWidget)
 
 # Formulario para editar un post
 class DateForm(forms.ModelForm):
