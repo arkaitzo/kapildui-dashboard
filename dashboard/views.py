@@ -54,9 +54,6 @@ def dashboard_home(request):
                 lineal = poth[i].potencia / potv[j].potencia
                 offset.append(10*math.log(lineal,10))
 
-    # medidas = ["drxpos5", "drxpos33", "drxneg5", "drx2pos5", "drx2pos33", "drx2neg5", "drxip", "drxdig", "drxana", "drx2ip", "drx2dig", "drx2ana", "poth", "potv", "ecutemp", "solcurrent", "offset"]
-
-
     # Devolver las consultas realizadas
     return render(request, 'dashboard/bloques_radar.html', \
     	{'drxpos5':drxpos5, 'drxpos33':drxpos33, 'drxneg5':drxneg5, \

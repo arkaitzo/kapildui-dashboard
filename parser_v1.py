@@ -11,7 +11,6 @@ bite_hoy = open(bite_path, 'r')
 lines = bite_hoy.readlines()
 bite_hoy.close()
 
-
 choices_fuentes_rx = [ "drxpowpos5", "drxpowpos33", "drxpowneg5", "drx1powpos5", "drx1powpos33", "drx1powneg5" ]
 item = 0
 while item < len(choices_fuentes_rx):
@@ -28,7 +27,6 @@ while item < len(choices_fuentes_rx):
 		TensionesReceptor.objects.create(fuente = choices_fuentes_rx[item], fecha = valores[j]['fecha'], tension = valores[j]['avg'])
 	TempDB.objects.all().delete()
 	item += 1
-#TempDB.objects.all().delete() # Borrar todo de TempDB
 
 choices_canales_tx = [ "spbtxpowkw", "spbtxpowdpvkw" ]
 item = 0
@@ -67,35 +65,25 @@ while item < len(choices_temperaturas):
 	item += 1
 
 
-bite_path = './BITE/20160301.log'
-bite_hoy = open(bite_path, 'r')
-log_lines = bite_hoy.readlines()
-bite_hoy.close()
+log_path = './BITE/20160301.log'
+log_hoy = open(log_path, 'r')
+log_lines = log_hoy.readlines()
+log_hoy.close()
 
 i = 0
-for j in (log_lines):
-	if (j[9:36] == 'solenoid current value in A'):
+for line in range(len(log_lines)):
+	if (log_lines[line][9:36] == 'solenoid current value in A'):
 		fechahora = datetime(2016,3,1,int(log_lines[i-152][29:31]),int(log_lines[i-152][32:34]))
 		fechahora = fechahora.replace(minute = ((fechahora.minute/10)*10))
 		fechahora = timezone.make_aware(fechahora, timezone.get_current_timezone())
-		valor = float(j[42:-1])
+		valor = float(log_lines[line][42:-1])
 		TempDB.objects.create(tag = "solenoid_cur", fecha = fechahora, valor = valor)
 	i = (i + 1)
 
 valores = TempDB.objects.values('fecha').annotate(avg=Avg('valor'))
-for j in range(len(valores)):
-	CorrienteSolenoide.objects.create(fecha = valores[j]['fecha'], corriente = valores[j]['avg'])
-	
+for i in range(len(valores)):
+	CorrienteSolenoide.objects.create(fecha = valores[i]['fecha'], corriente = valores[i]['avg'])
+
 TempDB.objects.all().delete()
 
 toc = time.time()
-
-print "\nTiempo de parseo: " + str(toc-tic) + " segundos\n"
-
-"""
-TensionesReceptor.objects.all().delete()
-PotenciasTransmisor.objects.all().delete()
-Temperaturas.objects.all().delete()
-CorrienteSolenoide.objects.all().delete()
-TempDB.objects.all().delete()
-"""
